@@ -7,8 +7,8 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PlaylistSerializer(serializers.ModelSerializer):
-    movies = MovieSerializer(many=True, read_only=True)  # Exibe os filmes associados
-
+    movies = MovieSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Playlist
         fields = '__all__'

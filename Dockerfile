@@ -2,12 +2,20 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt /app/
-RUN apt-get update && apt-get install -y netcat-openbsd gcc python3-dev libpq-dev && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt
+# Instala dependências
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    netcat-openbsd \  
+    postgresql-client \  
+    && rm -rf /var/lib/apt/lists/*
+# Camada separada para dependências
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+# Copia o restante da aplicação
+COPY . .
 
 EXPOSE 8000
 

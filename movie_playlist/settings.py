@@ -1,20 +1,20 @@
-
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv() # Carrega as variáveis do arquivo .env
+load_dotenv()  # Carrega as variáveis do arquivo .env
 
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Chave secreta 
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-q8j!8(ztao1!4o^43gu#l@di7d6!mbzg077txtls7sjo727n6-')
+# Chave secreta
+SECRET_KEY = os.getenv('SECRET_KEY', 'default-secret-key')
 
 # Debug ativado para desenvolvimento
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+# Hosts permitidos
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Aplicativos instalados
 INSTALLED_APPS = [
@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',          # Django REST Framework
+    'rest_framework',
+    'rest_framework.authtoken',  # Autenticação por token
     'playlist',
 ]
 
@@ -72,34 +73,31 @@ DATABASES = {
 
 # Validação de senhas
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
 # Internacionalização
 LANGUAGE_CODE = 'pt-br'
-TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'America/Recife'
 USE_I18N = True
 USE_TZ = True
 
 # Arquivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'playlist' / 'static', 
-]
-# Configuração do Django REST Framework (padrão)
+STATICFILES_DIRS = [BASE_DIR / 'playlist' / 'static']
+
+# Configuração do Django REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
+
+# Chave da API OMDb
+OMDB_API_KEY = os.getenv('OMDB_API_KEY')

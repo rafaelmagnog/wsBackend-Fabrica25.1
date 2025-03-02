@@ -1,7 +1,12 @@
 from django.contrib import admin
 from .models import Movie, Playlist
 
-# Register your models here.
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('title', 'year', 'director')
+    search_fields = ('title', 'director')
 
-admin.site.register(Movie)
-admin.site.register(Playlist)
+class PlaylistAdmin(admin.ModelAdmin):
+    filter_horizontal = ('movies',)
+
+admin.site.register(Movie, MovieAdmin)
+admin.site.register(Playlist, PlaylistAdmin)

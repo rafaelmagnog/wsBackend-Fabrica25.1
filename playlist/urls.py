@@ -1,16 +1,12 @@
-from django.urls import path, include
-from rest_framework import routers
-from . import views, viewsets
-
-router = routers.DefaultRouter()
-router.register(r'movies', viewsets.MovieViewSet)
-router.register(r'playlists', viewsets.PlaylistViewSet)
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    # Endpoints da API
-    path('api/', include(router.urls)),
-    # View da interface web
-    path('', views.playlist_view, name='playlist_view'),
-    # Rota para adicionar filme à playlist (recebe o id da playlist)
-    path('add_movie/<int:playlist_id>/', views.add_movie, name='add_movie'),
+    path('', views.main_menu, name='main_menu'),
+    path('watchlist/', views.playlist_detail, {'playlist_type': 'watchlist'}, name='watchlist'),
+    path('liked/', views.playlist_detail, {'playlist_type': 'recommended'}, name='liked'),
+    path('search/', views.search_movies, name='search'),
+    path('movie/<str:imdb_id>/', views.movie_detail, name='movie_detail'),  # Rota para detalhes do filme
+    path('add/<str:playlist_type>/', views.add_movie, name='add_movie'),
+    path('remove/<int:playlist_id>/<int:movie_id>/', views.remove_movie, name='remove_movie'),
 ]
