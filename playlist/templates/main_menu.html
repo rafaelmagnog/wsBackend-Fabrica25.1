@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-menu">
+    <h1>Welcome to MoviePlay</h1>
+    <div class="menu-options">
+        <a href="{% url 'watchlist' %}" class="menu-btn">
+            <i class="fas fa-bookmark"></i>
+            Watchlist
+        </a>
+        <a href="{% url 'liked' %}" class="menu-btn">
+            <i class="fas fa-heart"></i>
+            Liked Movies
+        </a>
+        <a href="{% url 'search' %}" class="menu-btn">
+            <i class="fas fa-search"></i>
+            Search Movies
+        </a>
+    </div>
+</div>
+{% endblock %}

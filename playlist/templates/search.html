@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="search-container">
+    <h2>Search Movies</h2>
+    <form method="get" action="{% url 'search' %}">
+        <input type="text" name="query" placeholder="Search for movies..." value="{{ query }}">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+
+    {% if search_results %}
+    <div class="search-results">
+        {% for movie in search_results %}
+        <div class="movie-card">
+            {% if movie.poster %}
+            <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster" class="movie-poster">
+            {% endif %}
+            <div class="movie-info">
+                <h3>{{ movie.title }} ({{ movie.year }})</h3>
+                <p class="director">{{ movie.director }}</p>
+                <p class="plot">{{ movie.plot|truncatewords:30 }}</p>
+                <form action="{% url 'add_movie' 'watchlist' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="imdb_id" value="{{ movie.imdb_id }}">
+                    <button type="submit" class="add-btn">
+                        <i class="fas fa-plus"></i> Add to Watchlist
+                    </button>
+                </form>
+                <form action="{% url 'add_movie' 'liked' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="imdb_id" value="{{ movie.imdb_id }}">
+                    <button type="submit" class="add-btn">
+                        <i class="fas fa-heart"></i> Add to Liked
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
