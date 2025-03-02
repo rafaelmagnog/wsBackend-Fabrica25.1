@@ -69,6 +69,11 @@ def movie_detail(request, imdb_id):
     
     return render(request, 'movie_detail.html', {'movie': movie})
 
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
+from django.conf import settings
+import requests
+
 def add_movie(request, playlist_type):
     if request.method == "POST":
         imdb_id = request.POST.get('imdb_id')
@@ -96,12 +101,24 @@ def add_movie(request, playlist_type):
                 messages.error(request, "Filme não encontrado na OMDb API.")
         except requests.exceptions.RequestException as e:
             messages.error(request, f"Erro na conexão com a OMDb API: {str(e)}")
-    return redirect('playlist_detail', playlist_type=playlist_type)
+
+    # Redireciona de volta para a página de busca, preservando a query original
+    referer_url = request.META.get('HTTP_REFERER', '/')
+    return redirect(referer_url)
+
 
 def remove_movie(request, playlist_id, movie_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
     movie = get_object_or_404(Movie, id=movie_id)
+    
     if request.method == "POST":
         playlist.movies.remove(movie)
         messages.success(request, f"{movie.title} removido de {playlist.name}")
-    return redirect('playlist_detail', playlist_type=playlist.playlist_type)
+    
+    # Redireciona para a URL correta baseada no tipo da playlist
+    if playlist.playlist_type == 'watchlist':
+        return redirect('watchlist')
+    elif playlist.playlist_type == 'recommended':
+        return redirect('liked')
+    else:
+        return redirect('main_menu')
