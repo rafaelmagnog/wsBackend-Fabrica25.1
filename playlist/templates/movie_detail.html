@@ -12,6 +12,8 @@
     {% endif %}
     <p><strong>Director:</strong> {{ movie.director }}</p>
     <p><strong>Plot:</strong> {{ movie.plot }}</p>
+    <button onclick="window.history.back()">Voltar</button>
+
     <a href="{% url 'main_menu' %}" class="back-btn">Back to Menu</a>
 </div>
 {% endblock %}
