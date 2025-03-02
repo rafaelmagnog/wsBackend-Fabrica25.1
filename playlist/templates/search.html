@@ -22,15 +22,12 @@
             
             <div class="movie-info">
                 <h3>{{ movie.title }} ({{ movie.year }})</h3>
-                
                 {% if movie.director and movie.director != 'N/A' %}
                 <p class="director">Directed by {{ movie.director }}</p>
                 {% endif %}
-                
                 {% if movie.plot and movie.plot != 'N/A' %}
                 <p class="plot">{{ movie.plot }}</p>
                 {% endif %}
-                
                 <div class="action-buttons">
                     <form action="{% url 'add_movie' 'watchlist' %}" method="post">
                         {% csrf_token %}
@@ -39,8 +36,7 @@
                             <i class="fas fa-plus"></i> Watchlist
                         </button>
                     </form>
-                    
-                    <form action="{% url 'add_movie' 'liked' %}" method="post">
+                    <form action="{% url 'add_movie' 'recommended' %}" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="imdb_id" value="{{ movie.imdb_id }}">
                         <button type="submit" class="add-btn">
@@ -48,6 +44,7 @@
                         </button>
                     </form>
                 </div>
+                <a href="{% url 'movie_detail' movie.imdb_id %}" class="detail-btn">View Details</a>
             </div>
         </div>
         {% endfor %}

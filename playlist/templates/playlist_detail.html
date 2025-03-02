@@ -16,6 +16,7 @@
             <h3>{{ movie.title }} ({{ movie.year }})</h3>
             <p class="director">{{ movie.director }}</p>
             <p class="plot">{{ movie.plot|truncatewords:30 }}</p>
+            <a href="{% url 'movie_detail' movie.imdb_id %}" class="detail-btn">View Details</a>
             <form action="{% url 'remove_movie' playlist.id movie.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="remove-btn">
