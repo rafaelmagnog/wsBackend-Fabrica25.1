@@ -2,11 +2,13 @@
 
 {% block content %}
 <div class="search-container">
-    <h2>Search Movies</h2>
-    <form method="get" action="{% url 'search' %}">
-        <input type="text" name="query" placeholder="Search for movies..." value="{{ query }}" required>
-        <button type="submit"><i class="fas fa-search"></i> Search</button>
-    </form>
+    <div class="search-bar">
+        <h2>Search Movies</h2>
+        <form method="get" action="{% url 'search' %}">
+            <input type="text" name="query" placeholder="Search for movies..." value="{{ query }}" required>
+            <button type="submit"><i class="fas fa-search"></i> Search</button>
+        </form>
+    </div>
 
     {% if search_results %}
     <div class="search-results">
