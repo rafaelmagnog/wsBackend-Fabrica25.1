@@ -1,11 +1,11 @@
 
-# MoviePlay
+# MovieList
 
 [![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-orange)](README.md)
 [![Idioma: PT-BR](https://img.shields.io/badge/Linguagem-Português-green)](README.md)
 [![Language: EN](https://img.shields.io/badge/Language-English-red)](README.en.md)
 
-**MoviePlay** é uma aplicação web desenvolvida em **Django** para gerenciar listas de filmes. Com ela, você pode adicionar filmes à sua watchlist, marcar filmes como favoritos e consultar informações detalhadas através da **API OMDb**. A aplicação está containerizada com **Docker** e utiliza **PostgreSQL** como banco de dados.
+**MovieList** é uma aplicação web desenvolvida em **Django** para gerenciar listas de filmes. Com ela, você pode adicionar filmes à sua watchlist, marcar filmes como favoritos e consultar informações detalhadas através da **API OMDb**. A aplicação está containerizada com **Docker** e utiliza **PostgreSQL** como banco de dados.
 
 Este projeto foi desenvolvido como parte de um desafio do **Workshop de Backend da Fábrica de Software do UNIPÊ** (Centro Universitário de João Pessoa), um núcleo de inovação que propõe soluções para problemas reais desde 2009.
 
@@ -116,8 +116,8 @@ A aplicação pode ser executada de duas maneiras:
 1. **Clone o repositório**:
 
    ```bash
-   git clone https://github.com/rafaelmagnog/movieplay.git
-   cd movieplay
+   git clone https://github.com/rafaelmagnog/wsBackend-Fabrica25.1.git
+   cd wsBackend-Fabrica25.1
    ```
 
 2. **Crie o arquivo `.env`** (caso ainda não exista) na raiz do projeto com as configurações necessárias:
@@ -178,8 +178,8 @@ Caso prefira executar a aplicação manualmente (por exemplo, em um ambiente loc
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/rafaelmagnog/movieplay.git
-   cd movieplay
+   git clone https://github.com/rafaelmagnog/wsBackend-Fabrica25.1.git
+   cd wsBackend-Fabrica25.1
    ```
 
 2. **Crie e ative um ambiente virtual**:
