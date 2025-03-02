@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlists de Filmes</title>
+    <link rel="stylesheet" href="{% static 'playlist.css' %}">
+</head>
+<body>
+    <h1>Playlists de Filmes</h1>
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% for playlist in playlists %}
+        <div>
+            <h2>{{ playlist.name }} ({{ playlist.playlist_type }})</h2>
+            <ul>
+                {% for movie in playlist.movies.all %}
+                    <li>{{ movie.title }} ({{ movie.year }}) - {{ movie.director }}</li>
+                {% empty %}
+                    <li>Sem filmes</li>
+                {% endfor %}
+            </ul>
+            <form action="{% url 'add_movie' playlist.id %}" method="post">
+                {% csrf_token %}
+                <label>IMDB ID: </label>
+                <input type="text" name="imdb_id" placeholder="Ex: tt0111161" required>
+                <button type="submit">Adicionar Filme</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
