@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="playlist-header">
+    <h2>{{ playlist.name }}</h2>
+    <a href="{% url 'main_menu' %}" class="back-btn">Back to Menu</a>
+</div>
+
+<div class="movie-list">
+    {% for movie in playlist.movies.all %}
+    <div class="movie-card">
+        {% if movie.poster %}
+        <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster" class="movie-poster">
+        {% endif %}
+        <div class="movie-info">
+            <h3>{{ movie.title }} ({{ movie.year }})</h3>
+            <p class="director">{{ movie.director }}</p>
+            <p class="plot">{{ movie.plot|truncatewords:30 }}</p>
+            <form action="{% url 'remove_movie' playlist.id movie.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="remove-btn">
+                    <i class="fas fa-trash"></i> Remove
+                </button>
+            </form>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-state">
+        <p>No movies in this playlist yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
