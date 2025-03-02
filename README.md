@@ -11,14 +11,3 @@ Este é um projeto Django que permite aos usuários criar playlists de filmes qu
 - CRUD completo para as entidades relacionadas (Movie e Playlist) via Django Admin e API.
 - Autenticação por token para endpoints da API com Django REST Framework.
 
-## Pré-requisitos
-
-- Docker e Docker Compose instalados na máquina.
-
-## Instruções para Execução
-
-1. Clone o repositório.
-2. Configure as variáveis de ambiente criando um arquivo `.env` (veja o exemplo fornecido).
-3. Construa e inicie os containers Docker:
-   ```bash
-   docker-compose up --build
