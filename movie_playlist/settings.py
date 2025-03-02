@@ -1,17 +1,20 @@
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv() # Carrega as variáveis do arquivo .env
 
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Chave secreta 
-SECRET_KEY = 'django-insecure-q8j!8(ztao1!4o^43gu#l@di7d6!mbzg077txtls7sjo727n6-'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-q8j!8(ztao1!4o^43gu#l@di7d6!mbzg077txtls7sjo727n6-')
 
 # Debug ativado para desenvolvimento
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # Aplicativos instalados
 INSTALLED_APPS = [
@@ -59,11 +62,11 @@ WSGI_APPLICATION = 'movie_playlist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PG_DB', 'movie_db'),
-        'USER': os.environ.get('PG_USER', 'postgres'),
-        'PASSWORD': os.environ.get('PG_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('PG_HOST', 'localhost'),
-        'PORT': os.environ.get('PG_PORT', '5432'),
+        'NAME': os.getenv('PG_DB', 'movie_db'),
+        'USER': os.getenv('PG_USER', 'postgres'),
+        'PASSWORD': os.getenv('PG_PASSWORD', 'postgres'),
+        'HOST': os.getenv('PG_HOST', 'db'),
+        'PORT': os.getenv('PG_PORT', '5432'),
     }
 }
 
@@ -91,8 +94,9 @@ USE_TZ = True
 
 # Arquivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'playlist' / 'templates' / 'static']
-
+STATICFILES_DIRS = [
+    BASE_DIR / 'playlist' / 'static', 
+]
 # Configuração do Django REST Framework (padrão)
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
