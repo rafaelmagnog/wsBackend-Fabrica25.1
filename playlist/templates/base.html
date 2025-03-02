@@ -12,8 +12,8 @@
         <a href="{% url 'main_menu' %}" class="logo">MoviePlay</a>
         <div class="nav-links">
             <a href="{% url 'watchlist' %}">Watchlist</a>
-            <a href="{% url 'liked' %}">Liked</a>
-            <a href="{% url 'search' %}">Search</a>
+            <a href="{% url 'liked' %}">Liked Movies</a>
+            <a href="{% url 'search' %}">Search Movies</a>
         </div>
     </nav>
     <div class="container">
@@ -24,9 +24,7 @@
             {% endfor %}
         </div>
         {% endif %}
-        
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>

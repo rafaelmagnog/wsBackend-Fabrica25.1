@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="movie-detail-card">
+    <h2>{{ movie.title }} ({{ movie.year }})</h2>
+    {% if movie.poster and movie.poster != 'N/A' %}
+    <img src="{{ movie.poster }}" alt="{{ movie.title }} Poster" class="movie-poster">
+    {% else %}
+    <div class="poster-placeholder">
+        <i class="fas fa-film"></i>
+    </div>
+    {% endif %}
+    <p><strong>Director:</strong> {{ movie.director }}</p>
+    <p><strong>Plot:</strong> {{ movie.plot }}</p>
+    <a href="{% url 'main_menu' %}" class="back-btn">Back to Menu</a>
+</div>
+{% endblock %}
