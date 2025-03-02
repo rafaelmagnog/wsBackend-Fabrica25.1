@@ -175,3 +175,39 @@ button:hover {
     margin-bottom: 1rem;
     color: var(--secondary-color);
 }
+
+/* Adicione estas regras no final do playlist.css */
+.poster-placeholder {
+    background: #ecf0f1;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poster-placeholder i {
+    font-size: 3rem;
+    color: #bdc3c7;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.alert-error {
+    background: #e74c3c;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
