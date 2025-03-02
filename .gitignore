@@ -1,0 +1,85 @@
+
+### Python ###
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.python-version
+
+### Virtual Environment ###
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+### Django ###
+db.sqlite3
+*.log
+/mediafiles/
+/staticfiles/
+*.pot
+*.mo
+
+### Migrations (opcional - descomente para excluir) ###
+# */migrations/*
+# !*/migrations/__init__.py
+
+### Docker ###
+docker-compose.override.yml
+/postgres_data/
+.dockerignore
+
+### Environment Variables ###
+.env
+.env.*
+!.env.example
+secrets.json
+
+### IDEs ###
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+*.ipr
+*.iws
+
+### Sistema Operacional ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Temporary Files ###
+*.swp
+*.bak
+*.tmp
+*.orig
+*~
+
+### Logs e Debug ###
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Testes ###
+.coverage
+htmlcov/
+.pytest_cache/
+test-results.xml
+
+### PostgreSQL (Docker Volume) ###
+/postgres_data/
