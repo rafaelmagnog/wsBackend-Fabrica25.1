@@ -1,11 +1,11 @@
 
-# MoviePlay
+# MovieList
 
 [![Status](https://img.shields.io/badge/status-In%20Progess-orange)](README.md)
 [![Language: PT-BR](https://img.shields.io/badge/Linguagem-Português-green)](README.md)
 [![Language: EN](https://img.shields.io/badge/Language-English-red)](README.en.md)
 
-**MoviePlay** is a web application developed in Django for managing movie lists. With it, you can add movies to your watchlist, mark movies as favorites and consult detailed information via the **API OMDb**. The application is containerized with **Docker** and uses **PostgreSQL** as its database.
+**MovieList** is a web application developed in Django for managing movie lists. With it, you can add movies to your watchlist, mark movies as favorites and consult detailed information via the **API OMDb**. The application is containerized with **Docker** and uses **PostgreSQL** as its database.
 
 This project was developed as part of a challenge from the **Software Factory Backend Workshop at UNIPÊ** (University Center of João Pessoa), an innovation center that has been proposing solutions to real problems since 2009.
 
@@ -116,8 +116,8 @@ The application can be run in two ways:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/rafaelmagnog/movieplay.git
-   cd movieplay
+   git clone https://github.com/rafaelmagnog/wsBackend-Fabrica25.1.git
+   cd wsBackend-Fabrica25.1
    ```
 
 
@@ -179,8 +179,8 @@ If you prefer to run the application manually (for example, in a local environme
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/rafaelmagnog/movieplay.git
-   cd movieplay
+   git clone https://github.com/rafaelmagnog/wsBackend-Fabrica25.1.git
+   cd wsBackend-Fabrica25.1
    ```
 
 2. **Create and activate a virtual environment**:
