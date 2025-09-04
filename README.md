@@ -1,8 +1,8 @@
 
 # MovieList
 
-[![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-orange)](README.md)
-[![Idioma: PT-BR](https://img.shields.io/badge/Linguagem-Português-green)](README.md)
+[![Status](https://img.shields.io/badge/status-Concluído-green)](README.md)
+[![Idioma: PT-BR](https://img.shields.io/badge/Linguagem-Português-blue)](README.md)
 [![Language: EN](https://img.shields.io/badge/Language-English-red)](README.en.md)
 
 **MovieList** é uma aplicação web desenvolvida em **Django** para gerenciar listas de filmes. Com ela, você pode adicionar filmes à sua watchlist, marcar filmes como favoritos e consultar informações detalhadas através da **API OMDb**. A aplicação está containerizada com **Docker** e utiliza **PostgreSQL** como banco de dados.
